@@ -1,0 +1,122 @@
+body {
+    background-image: url("https://source.unsplash.com/featured/1700x900?car");
+    background-color: lightsteelblue;
+    background-size: cover;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100vh;
+}
+
+
+/* #header{
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-color: darkgrey;
+    padding: 20px
+}  */
+#header{
+    height: 100px;
+    background-color: blue;
+} 
+
+.container{
+    height: 100px;
+    background-color: green;
+    flex-grow: 1;
+}
+
+.footer{
+    height: 100px;
+    background-color: gray;
+}
+
+
+ .headerLogo{
+    padding-right: 65em;
+}
+#menue {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+}
+.logoName {
+    color: white; 
+    padding-left: 5rem;
+}
+.singMenue {
+    display: flex!important;
+    flex-basis: auto;
+}
+.navMenue{
+    display: flex;
+}
+#home{
+    color: lightgray; 
+    padding-right: 25px; 
+}
+#home:hover {
+    color: white; 
+}
+#sign1:hover {
+    color: white; 
+}
+
+#sign1 {
+    color: lightgray; 
+    padding-right: 25px;
+}
+
+/* container  */
+.row {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.left-side {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+#dynamic{
+    width: 100px; 
+    height: 80px;
+    background-size: cover;
+    border-radius: 45%;
+
+}
+
+/* .footer{
+    display: flex;
+    justify-content: space-between;
+    background: gray;
+    height: 60px;
+} */
+
+
+
+
+
+
+
+/* element.style {
+       background: white;
+    margin-left: 100px;
+    padding: 150px;
+    margin-right: 100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    overflow-y: scroll;
+} */
+
+/* background: white;
+    height: 150px;
+    overflow-y: scroll;
+    margin: 100px */
