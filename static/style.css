@@ -1,37 +1,35 @@
 body {
-    background-image: url("https://source.unsplash.com/featured/1700x900?car");
-    background-color: lightsteelblue;
-    background-size: cover;
-    /* overflow: hidden; */
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    height: 100vh;
+     background-size: 30%;
+     background-image: url('qdjs7vyrwofy.jpeg');
+}
+#main-container {
+    overflow: hidden;
 }
 
-
-/* #header{
+#header{
     flex-wrap: nowrap;
     justify-content: flex-start;
     background-color: darkgrey;
-    padding: 20px
-}  */
+
+}  
 #header{
-    height: 100px;
-    background-color: blue;
+    height: 60px;
+    background-color: rgb(7 49 62);
 } 
 
 .container{
     height: 100px;
     background-color: green;
     flex-grow: 1;
+    margin-bottom: -100px;
 }
 
 .footer{
-    height: 100px;
-    background-color: gray;
-}
+    height: 5rem;
+    background-color: rgb(7 49 62);
+    position: relative;
 
+}
 
  .headerLogo{
     padding-right: 65em;
@@ -43,18 +41,24 @@ body {
     justify-content: space-between;
 }
 .logoName {
-    color: white; 
-    padding-left: 5rem;
+    color: #ffffff;
+    padding-left: 30px;
+    font-size: 40px;
+    font-family: 'Oswald', sans-serif;
+}
+.logoName:hover {
+    color: rgb(218, 218, 218); 
 }
 .singMenue {
     display: flex!important;
     flex-basis: auto;
+    padding-right: 40px;
 }
 .navMenue{
     display: flex;
 }
 #home{
-    color: lightgray; 
+    color: #878282; 
     padding-right: 25px; 
 }
 #home:hover {
@@ -62,10 +66,12 @@ body {
 }
 #sign1:hover {
     color: white; 
+
 }
 
 #sign1 {
-    color: lightgray; 
+    color: #878282; 
+    font-family: 'Oswald', sans-serif;
     padding-right: 25px;
 }
 
@@ -75,6 +81,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+   
+
 }
 
 .left-side {
@@ -82,41 +90,298 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
 }
 
-#dynamic{
-    width: 100px; 
+
+.sell {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 10px;
+    background: rgb(255 255 255 / 69%);
+}
+    
+.sellbtn {
+    margin-left: 50px;
+}
+
+.sellBodyBox {
+    display: flex;
+    justify-content: center;
+} 
+    .sell:hover {
+    background: white;
+} 
+
+   
+.sellTitleBox {
+    display: flex;
+    justify-content: center;     
+}
+
+.soldTitleBox {
+    display: flex;
+    justify-content: center;
+      
+}
+
+
+.soldBodyBox {
+    display: flex;
+    justify-content: center;
+}
+
+form#sold-input1 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.soldInput {
+    padding: 5px;
+    border-radius: 8px;
+    margin: 10px;
+    background: rgb(255 255 255 / 69%);
+}
+.soldInput:hover {
+    background: white;
+}
+
+#left1 {
+    background: rgb(255, 255, 255);
+    border: 1px solid gray;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10%;
+}
+#left1:hover {
+    border: 2px solid rgb(101, 101, 101);
+  
+}
+
+.left-side1 {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background: #07313fcc;
+    padding: 50px;
+}
+
+
+
+.right-side {
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 6%;
+    background: #07313fcc;
+    margin-bottom: 10rem;
+    margin-top: 5rem;
+}
+
+
+
+.left-side2 {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background: #07313fcc;
+    padding: 30px;
+     margin-bottom: 10rem;
+
+}
+
+
+
+
+.sign-up {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.inputSingUp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    background: #ffffffbd;
+}
+
+.inputSingUp:hover {
+  background-color: rgb(255, 255, 255); 
+}
+
+.singUpbtn{
+    margin-left: 50px; 
+}
+
+
+.userName {
+    color: #35333d;
+    font-size: 22px;
+}
+
+.priceMiles.result1{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+}
+
+p.carPrice {
+    padding-right: 18px;
+}
+
+p#carInfo1\ result1 {
+    font-size: 30px;
+    margin: unset;
+    padding-top: 20px;
+    text-transform: capitalize;
+}
+
+
+.emailCell.result1 {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.nameLogo {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.box2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.box3 {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.signInBody {
+    background: #ffffff94;
+    padding: 20px;
+    margin: 10px;
+}
+.top {
+    background: #ffffffc9;
+    padding: 10px;
+}
+
+img#dynamic {
+    padding: 25px;
+}
+
+
+p.userSerialNum {
+    background: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#dynamic {
+    width: 100px;
     height: 80px;
     background-size: cover;
-    border-radius: 45%;
-
 }
 
-/* .footer{
+form#user-input2 {
     display: flex;
-    justify-content: space-between;
-    background: gray;
-    height: 60px;
-} */
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.singInInput {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    background: #ffffff9c;
+}
+input.singInInput:hover {
+
+    background:white;
+}
+
+.charSignUp {
+    background: #ffffff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin: 10px;
+}
+.charSignIn {
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin: 10px;
+}
+
+.foot1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 30px;
+}
 
 
+p.sellTitle {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin: 10px;
+    background: white;
+}
 
+p.soldTitle {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin: 10px;
+    background: white;
+}
 
+p.nameSignIn {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    color: #07313f;
+}
 
+p#carInfo1\ result1 {
+    font-family: 'Oswald', sans-serif;
+}
 
-
-/* element.style {
-       background: white;
-    margin-left: 100px;
-    padding: 150px;
-    margin-right: 100px;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    overflow-y: scroll;
-} */
-
-/* background: white;
-    height: 150px;
-    overflow-y: scroll;
-    margin: 100px */
+.box1 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 20px;
+}

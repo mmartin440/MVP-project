@@ -3,18 +3,18 @@ const $leftSide2 = $(".left-side2")
 const $rightSide1 = $(".right-side1")
 const $rightSide2 = $(".right-side2")
 const $home = $(".home")
-const $selectOpt1 = $("#home")
+const $selectOpt1 = $(".logoName")
 const $selectOpt2 = $("#sign1")
 const $selectOpt3 = $("#sign2")
 
 /* ----------------lef-box 1-------------------------*/
 $(".left-side2").empty()
+$(".right-side").hide()
 // $('.left-side2').hide()
 fetch("/api/cars", { method: "GET" })
   .then((res) => res.json())
   .then((data) => {
     carGenerator(data)
-    resetHomepage(data)
   })
 function carGenerator(carsOnSell) {
   for (let i = 0; i < carsOnSell.length; i++) {
@@ -24,9 +24,9 @@ function carGenerator(carsOnSell) {
     const $userName = $("<b></b>")
     $userName.attr("class", "userName result1")
     const name = carsOnSell[i].name
-    $userName.text(`@ ${name}`)
+    $userName.text(`@${name}`)
     $divLeft.append($userName)
-    // email
+    // make and model
     const $carYearMakeModel = $("<p></p>")
     $carYearMakeModel.attr("id", "carInfo1 result1")
     const year = carsOnSell[i].year
@@ -71,18 +71,28 @@ function carGenerator(carsOnSell) {
     const phone = carsOnSell[i].phone_number
     $userPhone.text(`Cell# : ${phone}`)
     $emailCell.append($userPhone)
+    // decription
+    const $userdescrip = $("<p></p>")
+    $userdescrip.attr("id", "phoneNum result1")
+    const descr = carsOnSell[i].description
+    $userdescrip.text(` ${descr}`)
+    $divLeft.append($userdescrip)
 
     $divLeft.append($emailCell)
     $leftSide1.append($divLeft)
   }
 }
 
-function resetHomepage(info) {
-  $selectOpt1.click(() => {
+// function resetHomepage (info) {
+  $selectOpt1.click((event) => {
+    window.location.reload()
+    event.preventDefault(); 
+    $(".left-side2").empty()
+    // $(".left-side1").empty()
     console.log("clicked")
-    carGenerator(info)
+  window.location.reload()
   })
-}
+// } 
 
 /*-----------------left box 2 -------------------------------*/
 $selectOpt2.click((event) => {
@@ -108,7 +118,7 @@ $selectOpt2.click((event) => {
   const $inEmail = $("<input>").attr({
     type: "text",
     name: "search-email1",
-    placeholder: "Enter Email eg. @gmail.com",
+    placeholder: "Email eg. @gmail.com",
     class: "inputSingUp",
   })
   $form.append($inEmail)
@@ -120,7 +130,7 @@ $selectOpt2.click((event) => {
   })
   $form.append($inPhone)
   const $singUpBtn = $("<button></button>")
-  $singUpBtn.attr("id", "singUp-btn")
+  $singUpBtn.attr("class", "inputSingUp singUpbtn") 
   $singUpBtn.text("SUBMIT")
   $form.append($singUpBtn)
 
@@ -135,18 +145,18 @@ $selectOpt2.click((event) => {
     type: "text",
     name: "search-name2",
     placeholder: "Enter Name",
-    class: "nameInput",
+    class: "singInInput",
   })
   $form2.append($inName2)
   const $inEmail2 = $("<input>").attr({
     type: "text",
     name: "search-email2",
-    placeholder: "Enter Email eg. @gmail.com",
-    class: "emailInput",
+    placeholder: "Email eg. @gmail.com",
+    class: "singInInput",
   })
   $form2.append($inEmail2)
   const $singUpBtn2 = $("<button></button>")
-  $singUpBtn2.attr("id", "singIn-btn")
+  $singUpBtn2.attr("class", "singInInput Inbtn")
   $singUpBtn2.text("SUBMIT")
   $form2.append($singUpBtn2)
 
@@ -195,6 +205,8 @@ $selectOpt2.click((event) => {
     fetch(`/api/owner/${email2}`)
       .then((response) => response.json())
       .then((data) => {
+        $(".right-side").show()
+        console.log('here',data[0].name)
         const $top = $("<div></div>").attr("class", "top")
         $(".sign-in").append($top)
         const $signInBody = $("<div></div>").attr("class", "signInBody")
@@ -206,6 +218,7 @@ $selectOpt2.click((event) => {
         $nameLogo.append($img)
         const $nameSingIn = $("<p></p>").attr("class", "nameSignIn")
         $nameSingIn.text(`${data[0].name}`)
+        
         $nameLogo.append($nameSingIn)
         const $userSerialNum = $("<p></p>").attr("class", "userSerialNum")
         $userSerialNum.text(`User_ID:  ${data[0].users_serialnum}`)
@@ -244,7 +257,7 @@ $selectOpt2.click((event) => {
 
           const $carsDescrp = $("<p></p>").attr("class", "carsDescrp")
           const $wordDescp = $("<p></p>").attr("class", "wordDecrp")
-          $wordDescp.text("DESCRIPTION")
+          $wordDescp.text("Description:")
           $carsDescrp.text(`${data[i].description}`)
           $box3.append($wordDescp)
           $box3.append($carsDescrp)
@@ -293,7 +306,7 @@ $sellform.append($sellModel)
 const $sellYear = $("<input>").attr({
   type: "text",
   name: "search-sellYear",
-  placeholder: "Cars Year ",
+  placeholder: "Car Year ",
   class: "sell",
 })
 $sellform.append($sellYear)
@@ -317,7 +330,7 @@ const $sellDescrip = $("<textarea></textarea").attr({
 })
 $sellform.append($sellDescrip)
 const $sellBtn = $("<button></button>")
-$sellBtn.attr("id", "sell-btn")
+$sellBtn.attr("class", "sell sellbtn")
 $sellBtn.text("SUBMIT")
 $sellform.append($sellBtn)
 
@@ -379,7 +392,7 @@ $soldTitleBox.append($soldTitle)
 const $carSerail = $("<input>").attr({
   type: "text",
   name: "search-carSerial",
-  placeholder: "Enter Car Serial Number",
+  placeholder: "Car Serial Number",
   class: "soldInput",
 })
 $soldform.append($carSerail)

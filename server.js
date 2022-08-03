@@ -95,15 +95,27 @@ app.post('/api/owner', (req, res, next) => {
     }
 })
 
+// //sign-in 
+
+//  app.get('/api/owner/:email', (req, res, next) => {
+//     const userEmail = req.params.email; 
+//     pool.query(' SELECT owner.name, owner.id AS users_serialNum, owner.email, cars.id AS cars_serialNum, cars.model, cars.make, cars.year, cars.miles, cars.description, cars.price FROM cars LEFT JOIN owner ON cars.owner_id=owner.id WHERE email = $1 RETURNING *', [userEmail]).then((data) => {
+//         res.send(data.rows); 
+//         // console.log(data.rows); 
+//     }).catch(next); 
+//  })
+
 //sign-in 
 
- app.get('/api/owner/:email', (req, res, next) => {
+app.get('/api/owner/:email', (req, res, next) => {
     const userEmail = req.params.email; 
     pool.query(' SELECT owner.name, owner.id AS users_serialNum, owner.email, cars.id AS cars_serialNum, cars.model, cars.make, cars.year, cars.miles, cars.description, cars.price FROM cars LEFT JOIN owner ON cars.owner_id=owner.id WHERE email = $1', [userEmail]).then((data) => {
         res.send(data.rows); 
         // console.log(data.rows); 
     }).catch(next); 
  })
+
+
 
 // selling a car aka adding car to database 
 app.post('/api/cars', (req, res, next) => {
@@ -118,6 +130,10 @@ app.post('/api/cars', (req, res, next) => {
         }
     
 })
+
+
+
+
 
 // sold a car, deleting from the system
 app.delete('/api/cars/:carId', (req, res, next) => {
