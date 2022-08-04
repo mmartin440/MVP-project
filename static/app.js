@@ -17,6 +17,7 @@ fetch("/api/cars", { method: "GET" })
     carGenerator(data)
   })
 function carGenerator(carsOnSell) {
+  $(".left-side2").css('display', 'none'); 
   for (let i = 0; i < carsOnSell.length; i++) {
     const $divLeft = $("<div></div>")
     $divLeft.attr("id", "left1")
@@ -75,7 +76,7 @@ function carGenerator(carsOnSell) {
     const $userdescrip = $("<p></p>")
     $userdescrip.attr("id", "phoneNum result1")
     const descr = carsOnSell[i].description
-    $userdescrip.text(` ${descr}`)
+    $userdescrip.text(`Description: ${descr}`)
     $divLeft.append($userdescrip)
 
     $divLeft.append($emailCell)
@@ -88,7 +89,6 @@ function carGenerator(carsOnSell) {
     window.location.reload()
     event.preventDefault(); 
     $(".left-side2").empty()
-    // $(".left-side1").empty()
     console.log("clicked")
   window.location.reload()
   })
@@ -96,6 +96,8 @@ function carGenerator(carsOnSell) {
 
 /*-----------------left box 2 -------------------------------*/
 $selectOpt2.click((event) => {
+  $(".left-side2").css('display', ''); 
+  $(".left-side1").css('display', 'none'); 
   console.log("clicked")
   event.preventDefault()
   $(".left-side1").empty()
@@ -104,7 +106,7 @@ $selectOpt2.click((event) => {
   // SIGN UP LAY OuT
   const $divSignUp = $("<div></div>").attr("class", "sign-up")
   $leftSide2.append($divSignUp)
-  const $divchar = $("<div>SIGN UP</div>").attr("class", "charSignUp")
+  const $divchar = $("<div>SING UP</div>").attr("class", "charSignUp")
   $divSignUp.append($divchar)
   const $form = $("<form></form>").attr("id", "user-input1")
   $divSignUp.append($form)
@@ -137,7 +139,7 @@ $selectOpt2.click((event) => {
   // SIGN-IN LAYOUT
   const $divSignIn = $("<div></div>").attr("class", "sign-in")
   $leftSide2.append($divSignIn)
-  const $divcharIn = $("<div>SIGN IN</div>").attr("class", "charSignIn")
+  const $divcharIn = $("<div>SING IN</div>").attr("class", "charSignIn")
   $divSignIn.append($divcharIn)
   const $form2 = $("<form></form>").attr("id", "user-input2")
   $divSignIn.append($form2)
@@ -172,8 +174,11 @@ $selectOpt2.click((event) => {
     event.preventDefault()
 
     let name1 = $name1.val()
+    console.log(name1)
     let email1 = $email1.val()
+    console.log(email1)
     let phoneNum = $phoneNum.val()
+    console.log(phoneNum)
     let newUser = { name: name1, email: email1, phone_number: phoneNum }
 
     fetch("/api/owner", {
@@ -205,63 +210,69 @@ $selectOpt2.click((event) => {
     fetch(`/api/owner/${email2}`)
       .then((response) => response.json())
       .then((data) => {
-        $(".right-side").show()
-        console.log('here',data[0].name)
-        const $top = $("<div></div>").attr("class", "top")
-        $(".sign-in").append($top)
-        const $signInBody = $("<div></div>").attr("class", "signInBody")
-        $(".sign-in").append($signInBody)
-        const $nameLogo = $("<div></div>").attr("class", "nameLogo")
-        $top.append($nameLogo)
-
-        const $img = $('<img id="dynamic">').attr("src", "carlogo3.jpeg")
-        $nameLogo.append($img)
-        const $nameSingIn = $("<p></p>").attr("class", "nameSignIn")
-        $nameSingIn.text(`${data[0].name}`)
-        
-        $nameLogo.append($nameSingIn)
-        const $userSerialNum = $("<p></p>").attr("class", "userSerialNum")
-        $userSerialNum.text(`User_ID:  ${data[0].users_serialnum}`)
-        $top.append($userSerialNum)
-
-        for (let i = 0; i < data.length; i++) {
-          const $carsBox = $("<div></div>").attr("class", "signInBody")
-          $signInBody.append($carsBox)
-
-          const $box1 = $("<div></div>").attr("class", "box1")
-          $carsBox.append($box1)
-          const $box2 = $("<div></div>").attr("class", "box2")
-          $carsBox.append($box2)
-          const $box3 = $("<div></div>").attr("class", "box3")
-          $carsBox.append($box3)
-
-          const $carSerialNum = $("<p></p>").attr("class", "carSerialNum")
-          $carSerialNum.text(`CAR_SERIAL_NUM: ${data[i].cars_serialnum}`)
-          $box1.append($carSerialNum)
-
-          const $yearMakeModel = $("<p></p>").attr("class", "yearMakeModel")
-          $yearMakeModel.text(
-            `${data[i].year} ${data[i].make} ${data[i].model}`
-          )
-          $box1.append($yearMakeModel)
-
-          console.log(data[i].price)
-
-          const $carsPrice = $("<p></p>").attr("class", "carsPrice")
-          $carsPrice.text(`Price: ${data[i].price}`)
-          $box2.append($carsPrice)
-
-          const $carsMiles = $("<p></p>").attr("class", "carsMiles")
-          $carsMiles.text(`Miles: ${data[i].miles}`)
-          $box2.append($carsMiles)
-
-          const $carsDescrp = $("<p></p>").attr("class", "carsDescrp")
-          const $wordDescp = $("<p></p>").attr("class", "wordDecrp")
-          $wordDescp.text("Description:")
-          $carsDescrp.text(`${data[i].description}`)
-          $box3.append($wordDescp)
-          $box3.append($carsDescrp)
+        if (name2 !== data[0].name) {
+          console.log(" Incorrect name"); 
+          alert('Incorrect Name or email'); 
+        } else {
+          $(".right-side").show()
+          console.log('here',data[0].name)
+          const $top = $("<div></div>").attr("class", "top")
+          $(".sign-in").append($top)
+          const $signInBody = $("<div></div>").attr("class", "signInBody")
+          $(".sign-in").append($signInBody)
+          const $nameLogo = $("<div></div>").attr("class", "nameLogo")
+          $top.append($nameLogo)
+  
+          const $img = $('<img id="dynamic">').attr("src", "carlogo3.jpeg")
+          $nameLogo.append($img)
+          const $nameSingIn = $("<p></p>").attr("class", "nameSignIn")
+          $nameSingIn.text(`${data[0].name}`)
+          
+          $nameLogo.append($nameSingIn)
+          const $userSerialNum = $("<p></p>").attr("class", "userSerialNum")
+          $userSerialNum.text(`User_ID:  ${data[0].users_serialnum}`)
+          $top.append($userSerialNum)
+  
+          for (let i = 0; i < data.length; i++) {
+            const $carsBox = $("<div></div>").attr("class", "signInBody")
+            $signInBody.append($carsBox)
+  
+            const $box1 = $("<div></div>").attr("class", "box1")
+            $carsBox.append($box1)
+            const $box2 = $("<div></div>").attr("class", "box2")
+            $carsBox.append($box2)
+            const $box3 = $("<div></div>").attr("class", "box3")
+            $carsBox.append($box3)
+  
+            const $carSerialNum = $("<p></p>").attr("class", "carSerialNum")
+            $carSerialNum.text(`CAR_SERIAL_NUM: ${data[i].cars_serialnum}`)
+            $box1.append($carSerialNum)
+  
+            const $yearMakeModel = $("<p></p>").attr("class", "yearMakeModel")
+            $yearMakeModel.text(
+              `${data[i].year} ${data[i].make} ${data[i].model}`
+            )
+            $box1.append($yearMakeModel)
+  
+            console.log(data[i].price)
+  
+            const $carsPrice = $("<p></p>").attr("class", "carsPrice")
+            $carsPrice.text(`Price: ${data[i].price}`)
+            $box2.append($carsPrice)
+  
+            const $carsMiles = $("<p></p>").attr("class", "carsMiles")
+            $carsMiles.text(`Miles: ${data[i].miles}`)
+            $box2.append($carsMiles)
+  
+            const $carsDescrp = $("<p></p>").attr("class", "carsDescrp")
+            const $wordDescp = $("<p></p>").attr("class", "wordDecrp")
+            $wordDescp.text("Description:")
+            $carsDescrp.text(`${data[i].description}`)
+            $box3.append($wordDescp)
+            $box3.append($carsDescrp)
+          }
         }
+      
 
         console.log("it worked", data)
       })
@@ -376,6 +387,7 @@ $sellForm1.submit((event) => {
     .then((data) => {
       console.log("Sucess: ", data)
     })
+    $sellForm1[0].reset()
 })
 
 //SOLD CAR OR DELETE A CAR LAYOUT
@@ -420,4 +432,6 @@ $soldForm1.submit((event) => {
     .then(() => {
       console.log("removed")
     })
+
+    $soldForm1[0].reset()
 })
